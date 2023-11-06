@@ -17,9 +17,14 @@ public class LoanApplicationModel implements Serializable {
     private Integer term;
     @Column(name = "interestRate")
     private Double interestRate = 2.5;
-
     @Column(name = "loanType")
     private String loanType;
+    @Column(name = "marritalStatus")
+    private String maritalStatus;
+    @Column(name = "income")
+    private Double income;
+    @Column(name = "expenses")
+    private Double expenses;
 
     public Long getAid() {
         return aid;
@@ -59,5 +64,29 @@ public class LoanApplicationModel implements Serializable {
 
     public void setLoanType(String loanType) {
         this.loanType = loanType;
+    }
+
+    public String getMaritalStatus() {
+        return maritalStatus;
+    }
+
+    public void setMaritalStatus(String maritalStatus) {
+        this.maritalStatus = maritalStatus;
+    }
+
+    public Double getIncome() {
+        return income;
+    }
+
+    public void setIncome(Double income) {
+        this.income = income;
+    }
+
+    public Double getExpenses() {
+        return expenses;
+    }
+
+    public void setExpenses(Double expenses) {
+        this.expenses = expenses;
     }
 }

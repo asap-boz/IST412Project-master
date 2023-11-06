@@ -26,6 +26,6 @@ public class ApplyController {
         loanApplicationService.createLoanApplication(loanApplication);
 
         // Redirect to a success page or the dashboard
-        return "redirect:/Success"; // Update with your actual dashboard URL
+        return "loanApplicationSubmitted"; // Update with your actual dashboard URL
     }
 }

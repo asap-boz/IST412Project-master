@@ -11,15 +11,7 @@
             text-align: center;
             font-family: Arial, sans-serif;
         }
-        .login-form {
-            background-color: white;
-            padding: 20px;
-            border-radius: 10px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
-            max-width: 400px;
-            margin: 0 auto;
-        }
-        .loan-form {
+        .login-form, .loan-form {
             background-color: white;
             padding: 20px;
             border-radius: 10px;
@@ -44,7 +36,7 @@
             border: 1px solid lightgreen;
             border-radius: 5px;
         }
-        select {
+        select, input[type="number"] {
             width: 100%;
             padding: 5px;
             margin: 5px 0;
@@ -87,6 +79,7 @@
 <section class="vh-100 gradient-custom">
     <h1 style="text-align: center">Loan Application</h1>
     <h2 style="text-align: center">What loan are you looking for?</h2>
+    <p style="text-align: center">Current Interest Rate: <span th:text="${loanApplication.interestRate}"></span></p>
     <div class="loan-form">
         <form th:action="@{/apply}" method="post">
             <div class="form-group">
@@ -104,9 +97,26 @@
             </div>
             <div class="form-group">
                 <label for="loanTerm">Loan Term (months):</label>
-                <input type="number" class="form-control" id="loanTerm" name="loanTerm" placeholder="E.g. 12 = 1 Year"  th:field="*{loanApplication.term}" required>
+                <input type="number" class="form-control" id="loanTerm" name="loanTerm" placeholder="E.g. 12 = 1 Year" th:field="*{loanApplication.term}" required>
             </div>
-            <button type="submit" class="submit-button" >Submit Application</button>
+            <div class="form-group">
+                <label for="maritalStatus">Marital Status:</label>
+                <select class="form-control" id="maritalStatus" name="maritalStatus" th:field="*{loanApplication.maritalStatus}" required>
+                    <option value="Single">Single</option>
+                    <option value="Married">Married</option>
+                    <option value="Divorced">Divorced</option>
+                    <option value="Widowed">Widowed</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="income">Income:</label>
+                <input type="number" class="form-control" id="income" name="income" placeholder="E.g. $50,000" th:field="*{loanApplication.income}" required>
+            </div>
+            <div class="form-group">
+                <label for="expenses">Expenses:</label>
+                <input type="number" class="form-control" id="expenses" name= "expenses" placeholder="E.g. $30,000" th:field="*{loanApplication.expenses}" required>
+            </div>
+            <button type="submit" class="submit-button">Submit Application</button>
         </form>
     </div>
 </section>
