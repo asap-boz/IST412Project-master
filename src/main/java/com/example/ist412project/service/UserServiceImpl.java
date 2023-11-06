@@ -1,6 +1,6 @@
 package com.example.ist412project.service;
 
-import com.example.ist412project.model.UserInfo;
+import com.example.ist412project.model.UserInfoModel;
 import com.example.ist412project.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -23,10 +23,10 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public UserInfo getUserById(long userId) {
-        Optional<UserInfo> userOptional = userRepository.findById(userId);
+    public UserInfoModel getUserById(long userId) {
+        Optional<UserInfoModel> userOptional = userRepository.findById(userId);
 
-        UserInfo user = null;
+        UserInfoModel user = null;
         if (userOptional.isPresent()) {
             user = userOptional.get();
         } else {
@@ -41,7 +41,7 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public Page<UserInfo> findPaginated(int pageNo, int pageSize, String sortField, String sortDirection) {
+    public Page<UserInfoModel> findPaginated(int pageNo, int pageSize, String sortField, String sortDirection) {
         Sort sort = sortDirection.equalsIgnoreCase(Sort.Direction.ASC.name()) ? Sort.by(sortField).ascending() :
                 Sort.by(sortField).descending();
 
@@ -50,23 +50,23 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public List<UserInfo> getAllUsers() {
+    public List<UserInfoModel> getAllUsers() {
         return userRepository.findAll();
     }
 
     @Override
-    public void saveUser(UserInfo user) {
+    public void saveUser(UserInfoModel user) {
 
     }
 
     @Override
     public boolean validateUser(String username, String password) {
-        UserInfo user = userRepository.findByUserNameAndPassword(username, password);
+        UserInfoModel user = userRepository.findByUserNameAndPassword(username, password);
         return user != null; // User is considered validated if found
     }
 
     @Override
-    public void createUser(UserInfo user) {
+    public void createUser(UserInfoModel user) {
 
     }
 }

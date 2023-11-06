@@ -16,7 +16,10 @@ public class LoanApplicationModel implements Serializable {
     @Column(name = "term")
     private Integer term;
     @Column(name = "interestRate")
-    private Double interestRate;
+    private Double interestRate = 2.5;
+
+    @Column(name = "loanType")
+    private String loanType;
 
     public Long getAid() {
         return aid;
@@ -48,5 +51,13 @@ public class LoanApplicationModel implements Serializable {
 
     public void setInterestRate(Double interestRate) {
         this.interestRate = interestRate;
+    }
+
+    public String getLoanType() {
+        return loanType;
+    }
+
+    public void setLoanType(String loanType) {
+        this.loanType = loanType;
     }
 }

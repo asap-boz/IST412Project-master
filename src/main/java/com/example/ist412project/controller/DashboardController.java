@@ -8,8 +8,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import com.example.ist412project.service.UserService;
-import com.example.ist412project.model.UserInfo;
-import java.util.List;
+import com.example.ist412project.model.UserInfoModel;
 
 
 @Controller
@@ -28,7 +27,7 @@ public class DashboardController {
     @GetMapping("/dashboard/user/{id}")
     public String viewAccountDashboardPage(@PathVariable (value = "id") long id, Model model) {
         // get user from service
-        UserInfo user = userService.getUserById(id);
+        UserInfoModel user = userService.getUserById(id);
         model.addAttribute("user", user);
         return "dashboard";
     }

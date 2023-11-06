@@ -7,8 +7,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
-import com.example.ist412project.service.UserService;
-import com.example.ist412project.model.UserInfo;
 
 @Controller
 public class ApplyController {
@@ -18,16 +16,16 @@ public class ApplyController {
 
     @GetMapping("/apply")
     public String showApplyPage(Model model) {
-        model.addAttribute("loanApplicationModel", new LoanApplicationModel());
+        model.addAttribute("loanApplication", new LoanApplicationModel());
         return "apply";
     }
 
     @PostMapping("/apply")
-    public String submitLoanApplication(@ModelAttribute LoanApplicationModel loanApplicationModel) {
+    public String submitLoanApplication(@ModelAttribute("loanApplication") LoanApplicationModel loanApplication) {
         // Save the loan application data to the database
-        loanApplicationService.saveLoanApplication(loanApplicationModel);
+        loanApplicationService.createLoanApplication(loanApplication);
 
         // Redirect to a success page or the dashboard
-        return "redirect:/dashboard/user"; // Update with your actual dashboard URL
+        return "redirect:/Success"; // Update with your actual dashboard URL
     }
 }

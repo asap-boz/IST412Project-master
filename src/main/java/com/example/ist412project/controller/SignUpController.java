@@ -1,6 +1,6 @@
 package com.example.ist412project.controller;
 
-import com.example.ist412project.model.UserInfo;
+import com.example.ist412project.model.UserInfoModel;
 import com.example.ist412project.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -22,13 +22,13 @@ public class SignUpController {
     // Mapping for displaying the sign-up form
     @GetMapping("/signup")
     public String showSignUpForm(Model model) {
-        model.addAttribute("user", new UserInfo());
+        model.addAttribute("user", new UserInfoModel());
         return "SignUpForm"; // Return the Thymeleaf template for the sign-up form
     }
 
     // Mapping for processing the sign-up form
     @PostMapping("/signup")
-    public String signUp(@ModelAttribute("user") UserInfo user) {
+    public String signUp(@ModelAttribute("user") UserInfoModel user) {
 
         // For simplicity, we're assuming the user service handles user creation
         userService.createUser(user);

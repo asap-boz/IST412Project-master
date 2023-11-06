@@ -88,10 +88,10 @@
     <h1 style="text-align: center">Loan Application</h1>
     <h2 style="text-align: center">What loan are you looking for?</h2>
     <div class="loan-form">
-        <form th:action="@{/submitLoanApplication}" method="post">
+        <form th:action="@{/apply}" method="post">
             <div class="form-group">
                 <label for="loanType">Loan Type:</label>
-                <select class="form-control" id="loanType" name="loanType" required>
+                <select class="form-control" id="loanType" name="loanType" th:field="*{loanApplication.loanType}" required>
                     <option value="" disabled selected>Select a loan type</option>
                     <option value="Personal">Personal Loan</option>
                     <option value="Auto">Auto Loan</option>
@@ -100,13 +100,13 @@
             </div>
             <div class="form-group">
                 <label for="loanAmount">Loan Amount:</label>
-                <input type="number" class="form-control" id="loanAmount" name="loanAmount" placeholder="E.g. $50,000" required>
+                <input type="number" class="form-control" id="loanAmount" name="loanAmount" placeholder="E.g. $50,000" th:field="*{loanApplication.loanAmount}" required>
             </div>
             <div class="form-group">
                 <label for="loanTerm">Loan Term (months):</label>
-                <input type="number" class="form-control" id="loanTerm" name="loanTerm" placeholder="E.g. 12 = 1 Year"  required>
+                <input type="number" class="form-control" id="loanTerm" name="loanTerm" placeholder="E.g. 12 = 1 Year"  th:field="*{loanApplication.term}" required>
             </div>
-            <button type="submit" class="submit-button">Submit Application</button>
+            <button type="submit" class="submit-button" >Submit Application</button>
         </form>
     </div>
 </section>

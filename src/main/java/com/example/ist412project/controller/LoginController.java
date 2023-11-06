@@ -1,6 +1,6 @@
 package com.example.ist412project.controller;
 
-import com.example.ist412project.model.UserInfo;
+import com.example.ist412project.model.UserInfoModel;
 import com.example.ist412project.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -23,7 +23,7 @@ public class LoginController {
 
     @GetMapping("/login")
     public String loginForm(Model model) {
-        model.addAttribute("user", new UserInfo());
+        model.addAttribute("user", new UserInfoModel());
         return "Login"; // Thymeleaf template name
     }
 
@@ -32,8 +32,8 @@ public class LoginController {
 
         if (userService.validateUser(userName, password)) {
             // Successful login
-            List<UserInfo> users = userService.getAllUsers();
-            for (UserInfo other : users) {
+            List<UserInfoModel> users = userService.getAllUsers();
+            for (UserInfoModel other : users) {
                 if (userName.equals(other.getUserName())) {
                     if (password.equals(other.getPassword())) {
                         return "redirect:/dashboard/user/" + other.getUserID();

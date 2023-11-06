@@ -5,7 +5,7 @@ import jakarta.persistence.*;
 import java.io.Serializable;
 @Entity
 @Table(name = "userinfo")
-public class UserInfo implements Serializable {
+public class UserInfoModel implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "uid")
@@ -23,7 +23,7 @@ public class UserInfo implements Serializable {
     @Column(name = "password")
     private String password;
 
-    public UserInfo() {
+    public UserInfoModel() {
 
     }
 
@@ -31,7 +31,7 @@ public class UserInfo implements Serializable {
     public void setUserName(String userName) {this.userName = userName;}
     public String getPassword() {return password;}
     public void setPassword(String password) {this.password = password;}
-    public UserInfo(long uid) {this.uid = uid;}
+    public UserInfoModel(long uid) {this.uid = uid;}
     public long getUid() {return uid;}
     public void setUid(long uid) {this.uid = uid;}
     public String getFirstName() {return firstName;}
