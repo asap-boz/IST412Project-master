@@ -8,9 +8,10 @@ import java.util.List;
 public interface UserService {
     List<UserInfoModel> getAllUsers();
     void saveUser(UserInfoModel user);
-    UserInfoModel getUserById(long userID);
+
     void deleteUserById(long userID);
     Page<UserInfoModel> findPaginated(int pageNo, int pageSize, String sortField, String sortDirection);
+    UserInfoModel getUserById(long userID);
 
     boolean validateUser(String userName, String password);
 

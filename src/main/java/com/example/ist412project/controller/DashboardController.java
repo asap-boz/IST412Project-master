@@ -25,12 +25,14 @@ public class DashboardController {
     }
 
     @GetMapping("/dashboard/user/{id}")
-    public String viewAccountDashboardPage(@PathVariable (value = "id") long id, Model model) {
+    public String viewAccountDashboardPage(@PathVariable(value = "id") long id, Model model) {
         // get user from service
         UserInfoModel user = userService.getUserById(id);
-        model.addAttribute("user", user);
+        model.addAttribute("user", user);  // Assuming you want to add the entire user object
+        model.addAttribute("userId", user.getUserID());  // Add only the user ID
         return "dashboard";
     }
+
 
     @GetMapping("/home")
     public String viewHomePage(Model model) {
@@ -42,7 +44,7 @@ public class DashboardController {
     @GetMapping("/comingSoon")
     public String viewConstructionPage(Model model) {
 
-        return "index";
+        return "comingSoon";
 
     }
 }

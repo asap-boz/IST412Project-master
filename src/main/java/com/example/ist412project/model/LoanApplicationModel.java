@@ -25,6 +25,8 @@ public class LoanApplicationModel implements Serializable {
     private Double income;
     @Column(name = "expenses")
     private Double expenses;
+    @Column(name = "userID")
+    private long userID;
 
     public Long getAid() {
         return aid;
@@ -88,5 +90,24 @@ public class LoanApplicationModel implements Serializable {
 
     public void setExpenses(Double expenses) {
         this.expenses = expenses;
+    }
+
+    public long getUserID() {
+        return userID;
+    }
+
+    public void setUserID(long userID) {
+        this.userID = userID;
+    }
+    @ManyToOne
+    @JoinColumn(name = "user_id")
+    private UserInfoModel user;
+
+    public UserInfoModel getUser() {
+        return user;
+    }
+
+    public void setUser(UserInfoModel user) {
+        this.user = user;
     }
 }

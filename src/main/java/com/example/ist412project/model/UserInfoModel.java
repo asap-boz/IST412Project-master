@@ -1,6 +1,7 @@
 package com.example.ist412project.model;
 
 import jakarta.persistence.*;
+import java.util.List;
 
 import java.io.Serializable;
 @Entity
@@ -49,5 +50,15 @@ public class UserInfoModel implements Serializable {
 
     public long getUserID() {
         return uid;
+    }
+    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
+    private List<LoanApplicationModel> loanApplications;
+
+    public List<LoanApplicationModel> getLoanApplications() {
+        return loanApplications;
+    }
+
+    public void setLoanApplications(List<LoanApplicationModel> loanApplications) {
+        this.loanApplications = loanApplications;
     }
 }

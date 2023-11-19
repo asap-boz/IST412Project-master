@@ -67,7 +67,7 @@
                     <a class="nav-link active" aria-current="page" th:href="@{/}">Log Out</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" th:href="@{/dashboard/user}">Return to Dashboard</a>
+                    <a class="nav-link" th:href="@{/dashboard/user/{userID}(userID=${userID})}">Return to Dashboard</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" th:href="@{/index}">Payment</a>
@@ -93,15 +93,15 @@
             </div>
             <div class="form-group">
                 <label for="loanAmount">Loan Amount:</label>
-                <input type="number" class="form-control" id="loanAmount" name="loanAmount" placeholder="E.g. $50,000" th:field="*{loanApplication.loanAmount}" required>
+                <input type="number" class="form-control" id="loanAmount" name="loanAmount" placeholder="E.g. $50,000" th:field="*{loanApplication.loanAmount}" required min="0">
             </div>
             <div class="form-group">
                 <label for="loanTerm">Loan Term (months):</label>
-                <input type="number" class="form-control" id="loanTerm" name="loanTerm" placeholder="E.g. 12 = 1 Year" th:field="*{loanApplication.term}" required>
+                <input type="number" class="form-control" id="loanTerm" name="loanTerm" placeholder="E.g. 12 = 1 Year" th:field="*{loanApplication.term}" required min="0">
             </div>
             <div class="form-group">
                 <label for="maritalStatus">Marital Status:</label>
-                <select class="form-control" id="maritalStatus" name="maritalStatus" th:field="*{loanApplication.maritalStatus}" required>
+                <select class="form-control" id="maritalStatus" name="maritalStatus" th:field="*{loanApplication.maritalStatus}" required >
                     <option value="Single">Single</option>
                     <option value="Married">Married</option>
                     <option value="Divorced">Divorced</option>
@@ -110,12 +110,14 @@
             </div>
             <div class="form-group">
                 <label for="income">Income:</label>
-                <input type="number" class="form-control" id="income" name="income" placeholder="E.g. $50,000" th:field="*{loanApplication.income}" required>
+                <input type="number" class="form-control" id="income" name="income" placeholder="E.g. $50,000" th:field="*{loanApplication.income}" required min="0">
             </div>
             <div class="form-group">
                 <label for="expenses">Expenses:</label>
-                <input type="number" class="form-control" id="expenses" name= "expenses" placeholder="E.g. $30,000" th:field="*{loanApplication.expenses}" required>
+                <input type="number" class="form-control" id="expenses" name= "expenses" placeholder="E.g. $30,000" th:field="*{loanApplication.expenses}" required min="0">
             </div>
+            <input type="hidden" id="userID" name="userID" th:value="${userID}" />
+
             <button type="submit" class="submit-button">Submit Application</button>
         </form>
     </div>
