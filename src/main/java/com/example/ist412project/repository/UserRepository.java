@@ -8,9 +8,11 @@ import java.util.List;
 
 @Repository
 public interface UserRepository extends JpaRepository<UserInfoModel, Long> {
+    // Retrieve a user by their username
     UserInfoModel findByUserName(String userName);
-
+    // Retrieve a user by their user ID
     UserInfoModel getUserByUid(Long userID);
+    // Retrieve a user by their username and password (used for authentication)
     UserInfoModel findByUserNameAndPassword(String username, String password);
 
 }

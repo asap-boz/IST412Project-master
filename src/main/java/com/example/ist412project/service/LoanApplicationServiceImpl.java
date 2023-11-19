@@ -29,8 +29,12 @@ public class LoanApplicationServiceImpl implements LoanApplicationService {
 
     @Override
     public void createLoanApplicationForUser(LoanApplicationModel loanApplication, Long userId) {
+        // Retrieve user information from the UserRepository based on the provided userId
         UserInfoModel user = UserRepository.getUserByUid(userId);
+        // Set the user for the loan application
         loanApplication.setUser(user);
+        // Save the loan application to the repository
         loanApplicationRepository.save(loanApplication);
     }
+
 }
