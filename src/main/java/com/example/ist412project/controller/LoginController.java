@@ -1,7 +1,7 @@
 package com.example.ist412project.controller;
 
 import com.example.ist412project.model.UserInfoModel;
-import com.example.ist412project.service.UserService;
+import com.example.ist412project.service.UserServ;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -14,10 +14,10 @@ import java.util.List;
 @Controller
 public class LoginController {
 
-    private final UserService userService;
+    private final UserServ userService;
 
     @Autowired
-    public LoginController(UserService userService) {
+    public LoginController(UserServ userService) {
         this.userService = userService;
     }
 

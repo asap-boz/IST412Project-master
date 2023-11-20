@@ -1,7 +1,7 @@
 package com.example.ist412project.controller;
 
 import com.example.ist412project.model.UserInfoModel;
-import com.example.ist412project.service.UserService;
+import com.example.ist412project.service.UserServ;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -12,10 +12,10 @@ import org.springframework.web.bind.annotation.PostMapping;
 @Controller
 public class SignUpController {
 
-    private final UserService userService;
+    private final UserServ userService;
 
     @Autowired
-    public SignUpController(UserService userService) {
+    public SignUpController(UserServ userService) {
         this.userService = userService;
     }
 

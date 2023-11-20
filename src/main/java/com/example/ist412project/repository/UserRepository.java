@@ -2,6 +2,7 @@ package com.example.ist412project.repository;
 
 import com.example.ist412project.model.UserInfoModel;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
@@ -14,5 +15,8 @@ public interface UserRepository extends JpaRepository<UserInfoModel, Long> {
     UserInfoModel getUserByUid(Long userID);
     // Retrieve a user by their username and password (used for authentication)
     UserInfoModel findByUserNameAndPassword(String username, String password);
+
+    @Query("SELECT u FROM UserInfoModel u WHERE u.email = ?1")
+    public UserInfoModel findByEmail(String email);
 
 }

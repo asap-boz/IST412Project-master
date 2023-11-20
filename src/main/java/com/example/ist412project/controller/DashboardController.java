@@ -1,13 +1,13 @@
 package com.example.ist412project.controller;
 
 
+import com.example.ist412project.service.UserServ;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
-import com.example.ist412project.service.UserService;
 import com.example.ist412project.model.UserInfoModel;
 
 
@@ -16,7 +16,7 @@ public class DashboardController {
     private static final Logger log = LoggerFactory.getLogger(DashboardController.class);
 
     @Autowired
-    private UserService userService;
+    private UserServ userService;
 
     @GetMapping("/viewDashboardPage")
     public String viewDashboardPage(Model model)
