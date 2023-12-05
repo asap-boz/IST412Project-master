@@ -5,27 +5,39 @@
     <title>eFinance App</title>
     <link rel="stylesheet" type="text/css" href="login_style.css" />
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+    <style>
+        body {
+            background-color: lightgreen;
+            font-family: Arial, sans-serif;
+        }
+    </style>
 </head>
 <body>
-<nav class="navbar navbar-dark bg-primary">
+<nav class="navbar navbar-dark bg-dark navbar-expand-sm mb-5">
     <div class="container-fluid">
-        <a class="navbar-brand" th:href="@{/}">ATZ Finance</a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarNav">
-            <ul class="navbar-nav">
-                <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" th:href="@{/}">Log Out</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" th:href="@{/apply(userID=${userId})}">Apply for Loan</a>
-                </li>
-
-                <li class="nav-item">
-                    <a class="nav-link" th:href="@{/makeaPayment(userID=${userId})}">Payment</a>
-                </li>
-            </ul>
+        <div class="row">
+            <div class="col">
+                <a class="navbar-brand" th:href="@{/}">ATZ Finance</a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav">
+                        <li class="nav-item mr-2">
+                            <a class="nav-link" th:href="@{/apply(userID=${userId})}">Apply for Loan</a>
+                        </li>
+                        <li class="nav-item mr-2">
+                            <a class="nav-link" th:href="@{/makeaPayment(userID=${userId})}">Make a Payment</a>
+                        </li>
+                        <li class="nav-item mr-2">
+                            <a class="nav-link" th:href="@{/inbox}">Inbox</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" th:href="@{/}">Log Out</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
         </div>
     </div>
 </nav>

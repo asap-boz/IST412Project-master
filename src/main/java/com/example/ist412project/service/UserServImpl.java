@@ -71,6 +71,7 @@ public class UserServImpl implements UserServ {
 
     @Override
     public void createUser(UserInfoModel user) {
+        userRepository.save(user);
 
     }
 }
