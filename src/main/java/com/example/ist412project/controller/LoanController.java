@@ -23,18 +23,18 @@ public class LoanController {
     private UserServImpl userServ;
 
     @GetMapping("/makeaPayment")
-    public String makePayment(Model model, @RequestParam("id") Long userID){
+    public String makePayment(Model model, @RequestParam("userID") Long userID){
         //model.addAttribute("type", type);
         model.addAttribute("userID", userID);
         //model.addAttribute("balance", balance);
         Payment payment = new Payment();
         model.addAttribute("payment", payment);
         //to-do Add current balance here to model to be displayed
-        return "make_payment";
+        return "makeaPayment";
     }
 
-    @PostMapping("/makeaPayment/{type}/{id}")
-    public String makePayment(@PathVariable("type") String type, @PathVariable("id") Long id, @ModelAttribute("payment") Payment payment, Model model){
+    @PostMapping("/makeaPayment")
+    public String makePayment(@PathVariable("userID") Long id, @ModelAttribute("payment") Payment payment, Model model){
         Long amount = payment.getAmount();
         //Logic for subtracting amount from balance
 //        if (type.equals("auto")) {
