@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
@@ -46,5 +47,33 @@ public class LoginController {
             model.addAttribute("error", "Invalid username or password");
             return "redirect:/failure";
         }
+    }
+
+    @GetMapping("/forgotPassword")
+    public String viewForgotPasswordPage(Model model)
+    {
+        UserInfoModel user = new UserInfoModel();
+        model.addAttribute("user", user);
+        return "Forgot";
+    }
+
+    @PostMapping("/checkUserEmail")
+    public String checkUserEmail(@ModelAttribute("user") UserInfoModel user) {
+        List<UserInfoModel> users = userService.getAllUsers();
+        for (UserInfoModel other : users) {
+            if (user.getEmail().equals(other.getEmail())) {
+                //email user password reset
+                return "redirect:/Forgot_sent";
+            }
+        }
+        return "redirect:/Forgot_sent";
+    }
+
+    @GetMapping("/Forgot_sent")
+    public String viewPasswordResetPage(Model model)
+    {
+        UserInfoModel user = new UserInfoModel();
+        model.addAttribute("user", user);
+        return "Forgot_sent";
     }
 }
