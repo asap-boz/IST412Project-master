@@ -91,47 +91,35 @@
             <br><br>
             <h3 class="text-center">How much would you like to pay?</h3>
 
-            <div class="card">
-                <div class="card-body">
-                    <form th:action="@{/make_payment/{type}/{id}(type=${type},id=${id})}" method="post" th:object="${payment}" id="payForm">
-                        <div class="form-group row">
-                            <label class="col-sm-6 col-form-label">Payment Amount</label>
-                            <div class="col">
+            <div class="loan-form">
+                <form th:action="@{/makeaPayment}" method="post">
+                    <div class="form-group">
+                        <h3 th:text="|Balance: balance|"></h3>
+                    </div>
+                    <div class="form-group">
+                        <label for="payment">Payment:</label>
+                        <input type="number" class="form-control" id="payment" name="payment" placeholder="E.g. $100" th:field="*{payment.amount}" required min="0">
+                    </div>
+                    <div class="form-group">
+                        <label for="name">Name on card:</label>
+                        <input type="text" class="form-control" id="name" name="name" placeholder="John Q Public" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="cardnum">Card Number:</label>
+                        <input type="number" class="form-control" id="cardnum" name="cardnum" placeholder="1111 2222 3333 4444" required min="0">
+                    </div>
+                    <div class="form-group">
+                        <label for="expdate">Expiration Date:</label>
+                        <input type="text" class="form-control" id="expdate" name= "expdate" placeholder="MM/YY" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="cvv">Security Code:</label>
+                        <input type="number" class="form-control" id="cvv" name="cvv" placeholder="999" required min="0" max="999">
+                    </div>
+                    <input type="hidden" id="userID" name="userID" th:value="${userID}" />
 
-                            </div>
-                        </div>
-                        <br><br>
-                        <div class="form-group row">
-                            <label class="col-sm-6 col-form-label">Full name on card</label>
-                            <div class="col">
-                                <input class="form-control" type="text"/>
-                            </div>
-                        </div>
-                        <div class="form-group row">
-                            <label class="col-sm-6 col-form-label">Card number</label>
-                            <div class="col">
-                                <input class="form-control" type="text"/>
-                            </div>
-                        </div>
-                        <div class="form-group row">
-                            <label class="col-sm-6 col-form-label">Expiration date</label>
-                            <div class="col-3">
-                                <input class="form-control" type="text" placeholder="MM/YY"/>
-                            </div>
-                        </div>
-                        <div class="form-group row">
-                            <label class="col-sm-6 col-form-label">Security code</label>
-                            <div class="col-2">
-                                <input class="form-control" type="text"/>
-                            </div>
-                        </div>
-                        <div class="form-group row">
-                            <div class="col">
-                                <input type="submit" class="btn btn-outline-success" value="Submit">
-                            </div>
-                        </div>
-                    </form>
-                </div>
+                    <button type="submit" class="submit-button">Submit Application</button>
+                </form>
             </div>
         </div>
     </div>
