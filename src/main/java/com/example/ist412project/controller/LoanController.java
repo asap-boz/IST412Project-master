@@ -22,6 +22,12 @@ public class LoanController {
     @Autowired
     private UserServImpl userServ;
 
+    @Autowired
+    private LoanApplicationServiceImpl loanServ;
+
+    @Autowired
+    private OutstandingLoanServiceImpl outstandingLoanService;
+
     @GetMapping("/makeaPayment")
     public String makePayment(Model model, @RequestParam("userID") Long userID){
         //model.addAttribute("type", type);
@@ -29,18 +35,21 @@ public class LoanController {
         //model.addAttribute("balance", balance);
         Payment payment = new Payment();
         model.addAttribute("payment", payment);
+        model.addAttribute("loan", outstandingLoanService.getOutstandingLoanFromLoanId(loanServ.getLoanIdFromUserId(userID)));
         //to-do Add current balance here to model to be displayed
         return "makeaPayment";
     }
 
     @PostMapping("/makeaPayment")
-    public String makePayment(@PathVariable("userID") Long id, @ModelAttribute("payment") Payment payment, Model model){
-        Long amount = payment.getAmount();
+    public String makePayment(@RequestParam("userID") Long id, @ModelAttribute("payment") Payment payment, @ModelAttribute("loan") OutstandingLoan loan, Model model){
+        OutstandingLoan paidLoan = outstandingLoanService.getOutstandingLoanFromLoanId(loanServ.getLoanIdFromUserId(id));
+        outstandingLoanService.applyPayment(payment, paidLoan);
+
         //Logic for subtracting amount from balance
 //        if (type.equals("auto")) {
 //            aLoanServ.processPayment(id, amount);
 //        }
-        return "thank_you";
+        return "redirect:/dashboard/user/" + id;
     }
 
     @GetMapping("/auto_loan")
