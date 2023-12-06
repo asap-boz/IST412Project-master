@@ -89,7 +89,7 @@
     <h2 style="text-align: center">What loan are you looking for?</h2>
     <p style="text-align: center">Current Interest Rate: <span th:text="${loanApplication.interestRate}"></span></p>
     <div class="loan-form">
-        <form th:action="@{/apply}" method="post">
+        <form th:action="@{/apply(userID=${userID})}" method="post">
             <div class="form-group">
                 <label for="loanType">Loan Type:</label>
                 <select class="form-control" id="loanType" name="loanType" th:field="*{loanApplication.loanType}" required>

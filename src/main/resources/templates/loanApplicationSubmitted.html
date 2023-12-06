@@ -8,7 +8,6 @@
     <style>
         body {
             background-color: lightgreen;
-            text-align: center;
             font-family: Arial, sans-serif;
         }
         .navbar {
@@ -19,33 +18,43 @@
             margin-top: 20vh;
             font-size: 24px;
             color: #333; /* Change the color to your preference */
+            text-align: center;
         }
     </style>
 </head>
 <body>
-<nav class="navbar navbar-dark">
+<nav class="navbar navbar-dark bg-dark navbar-expand-sm mb-5">
     <div class="container-fluid">
-        <a class="navbar-brand" th:href="@{/}">ATZ Finance</a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarNav">
-            <ul class="navbar-nav">
-                <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" th:href="@{/}">Log Out</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" th:href="@{/dashboard/user}">Return to Dashboard</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" th:href="@{/index}">Payment</a>
-                </li>
-            </ul>
+        <div class="row">
+            <div class="col">
+                <a class="navbar-brand" th:href="@{/}">ATZ Finance</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav">
+                        <li class="nav-item mr-2">
+                            <a class="nav-link" th:href="@{/dashboard/user/{userID}(userID=${userID})}">Dashboard</a>
+                        </li>
+                        <li class="nav-item mr-2">
+                            <a class="nav-link" th:href="@{/makeaPayment(userID=${userID})}">Make a Payment</a>
+                        </li>
+                        <li class="nav-item mr-2">
+                            <a class="nav-link" th:href="@{/inbox}">Inbox</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" th:href="@{/}">Log Out</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
         </div>
     </div>
 </nav>
 <div class="success-message">
     <h1>Loan Application was submitted successfully!</h1>
+    <p class="small mb-5 pb-lg-2"><a th:href="@{/dashboard/user/{userID}(userID=${userID})}">Return to dashboard
+    </a></p>
 </div>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3" crossorigin="anonymous"></script>
 </body>

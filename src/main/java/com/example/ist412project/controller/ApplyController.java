@@ -30,6 +30,7 @@ public class ApplyController {
     public String submitLoanApplication(@ModelAttribute("loanApplication") LoanApplicationModel loanApplication, Model model, @RequestParam Long userID) {
         // Save the loan application data to the database through the service
         model.addAttribute("user", new UserInfoModel()); // This line appears redundant and may not be necessary
+        model.addAttribute("userID", userID);
         loanApplicationService.createLoanApplication(loanApplication, userID);
 
         // Redirect to a success page or the dashboard
