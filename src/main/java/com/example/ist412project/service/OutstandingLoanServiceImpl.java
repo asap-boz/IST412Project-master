@@ -14,7 +14,7 @@ public class OutstandingLoanServiceImpl implements OutstandingLoanService{
     OutstandingLoanRepository loanRepo;
 
     @Override
-    public void applyPayment(Payment payment, OutstandingLoan loan) {
+    public void applyPayment(Payment payment, OutstandingLoan loan, long userID) {
 
         Double diff = loan.getBalance() - payment.getAmount();
         if (diff <= 0) {
@@ -23,7 +23,7 @@ public class OutstandingLoanServiceImpl implements OutstandingLoanService{
         }
 
         loan.setBalance(diff);
-
+        loan.setUserID(userID);
         loanRepo.save(loan);
     }
 

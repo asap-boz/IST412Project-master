@@ -19,7 +19,7 @@ public class LoanApplicationModel implements Serializable {
     private Double interestRate = 2.5;
     @Column(name = "loanType")
     private String loanType;
-    @Column(name = "marritalStatus")
+    @Column(name = "maritalStatus")
     private String maritalStatus;
     @Column(name = "income")
     private Double income;

@@ -9,13 +9,16 @@
         body {
             background-color: lightgreen;
             font-family: Arial, sans-serif;
+            margin: 0; /* Remove default body margin */
+            padding: 0; /* Remove default body padding */
         }
         .navbar {
             background-color: #3498db;
             color: white;
+            margin-bottom: 0; /* Reduce margin bottom */
         }
         .success-message {
-            margin-top: 20vh;
+            margin-top: 10px; /* Adjust margin-top as needed */
             font-size: 24px;
             color: #333; /* Change the color to your preference */
             text-align: center;
@@ -49,7 +52,7 @@
     </style>
 </head>
 <body>
-<!-- Your existing body content here -->
+
 <nav class="navbar navbar-dark bg-dark navbar-expand-sm mb-5">
     <div class="container-fluid">
         <div class="row">
@@ -84,19 +87,17 @@
 <div class="success-message">
     <h1>Loan Application Details!</h1>
 
-    <!-- Display loan application variables with white text and bold -->
-    <p>Interest Rate: <span class="loan-variable" th:text="|*{tax.interestRate}%|"></span></p>
-    <p>Loan Amount: <span class="loan-variable" th:text="|$*{loanApplications.loanAmount}|"></span></p>
-    <p>Term: <span class="loan-variable" th:text="|*{loanApplications.term} months|"></span></p>
+    <p>Interest Rate: <span class="loan-variable" th:text="${tax.interestRate}"></span></p>
+    <p>Loan Amount: <span class="loan-variable" th:text="${loanApplications.loanAmount}"></span></p>
+    <p>Balance Remaining: <span th:if="${outstandingLoan != null}" class="loan-variable" th:text="${outstandingLoan.balance}"></span></p>
+    <p>Term: <span class="loan-variable" th:text="${loanApplications.term}"></span></p>
     <p>Loan Type: <span class="loan-variable" th:text="${loanApplications.loanType}"></span></p>
-    <p>Expenses: <span class="loan-variable" th:text="|$*{loanApplications.expenses}|"></span></p>
-    <p>Income: <span class="loan-variable" th:text="|$*{loanApplications.income}|"></span></p>
+    <p>Expenses: <span class="loan-variable" th:text="${loanApplications.expenses}"></span></p>
+    <p>Income: <span class="loan-variable" th:text="${loanApplications.income}"></span></p>
     <p>Marital Status: <span class="loan-variable" th:text="${loanApplications.maritalStatus}"></span></p>
-    <!-- Assuming you have a relationship between LoanApplicationModel and OutstandingLoan -->
-    <p th:if="${outstandingLoan != null}">Amount Paid Off: <span  class="loan-variable" th:text="|$*{paidOffAmount}|"></span></p>
-    <p th:if="${outstandingLoan != null}">Remaining Balance: <span  class="loan-variable" th:text="|$*{outstandingLoan.balance}|"></span></p>
 
-    <!-- Add a white box around the "Return to Dashboard" button -->
+
+
     <div class="login-form">
         <a th:href="@{/dashboard/user/{userID}(userID=${userID})}" class="return-button">Return to Dashboard</a>
     </div>

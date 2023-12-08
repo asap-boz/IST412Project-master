@@ -16,8 +16,7 @@ import org.springframework.web.bind.annotation.*;
 public class LoanController {
 
 
-    @Autowired
-    private ALoanServ aLoanServ;
+
 
     @Autowired
     private UserServImpl userServ;
@@ -41,9 +40,9 @@ public class LoanController {
     }
 
     @PostMapping("/makeaPayment")
-    public String makePayment(@RequestParam("userID") Long id, @ModelAttribute("payment") Payment payment, @ModelAttribute("loan") OutstandingLoan loan, Model model){
+    public String makePayment(@RequestParam("userID") Long id, @ModelAttribute("payment") Payment payment, @ModelAttribute("loan") OutstandingLoan loan, Model model, @RequestParam Long userID){
         OutstandingLoan paidLoan = outstandingLoanService.getOutstandingLoanFromLoanId(loanServ.getLoanIdFromUserId(id));
-        outstandingLoanService.applyPayment(payment, paidLoan);
+        outstandingLoanService.applyPayment(payment, paidLoan,userID);
 
         model.addAttribute("userID", id);
         model.addAttribute("balance", paidLoan.getBalance());
