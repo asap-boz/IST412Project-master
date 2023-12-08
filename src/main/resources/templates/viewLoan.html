@@ -85,15 +85,16 @@
     <h1>Loan Application Details!</h1>
 
     <!-- Display loan application variables with white text and bold -->
-    <p>Interest Rate: <span class="loan-variable" th:text="${tax.interestRate}"></span></p>
-    <p>Loan Amount: <span class="loan-variable" th:text="${loanApplications.loanAmount}"></span></p>
-    <p>Term: <span class="loan-variable" th:text="${loanApplications.term}"></span></p>
+    <p>Interest Rate: <span class="loan-variable" th:text="|*{tax.interestRate}%|"></span></p>
+    <p>Loan Amount: <span class="loan-variable" th:text="|$*{loanApplications.loanAmount}|"></span></p>
+    <p>Term: <span class="loan-variable" th:text="|*{loanApplications.term} months|"></span></p>
     <p>Loan Type: <span class="loan-variable" th:text="${loanApplications.loanType}"></span></p>
-    <p>Expenses: <span class="loan-variable" th:text="${loanApplications.expenses}"></span></p>
-    <p>Income: <span class="loan-variable" th:text="${loanApplications.income}"></span></p>
+    <p>Expenses: <span class="loan-variable" th:text="|$*{loanApplications.expenses}|"></span></p>
+    <p>Income: <span class="loan-variable" th:text="|$*{loanApplications.income}|"></span></p>
     <p>Marital Status: <span class="loan-variable" th:text="${loanApplications.maritalStatus}"></span></p>
     <!-- Assuming you have a relationship between LoanApplicationModel and OutstandingLoan -->
-    <p>Amount Paid Off: <span th:if="${outstandingLoan != null}" class="loan-variable" th:text="${outstandingLoan.balance}"></span></p>
+    <p th:if="${outstandingLoan != null}">Amount Paid Off: <span  class="loan-variable" th:text="|$*{paidOffAmount}|"></span></p>
+    <p th:if="${outstandingLoan != null}">Remaining Balance: <span  class="loan-variable" th:text="|$*{outstandingLoan.balance}|"></span></p>
 
     <!-- Add a white box around the "Return to Dashboard" button -->
     <div class="login-form">
