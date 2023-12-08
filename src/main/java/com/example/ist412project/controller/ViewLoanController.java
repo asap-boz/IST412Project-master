@@ -1,0 +1,45 @@
+package com.example.ist412project.controller;
+
+import com.example.ist412project.model.OutstandingLoan;
+import com.example.ist412project.model.LoanApplicationModel;
+import com.example.ist412project.repository.OutstandingLoanRepository;
+import com.example.ist412project.service.LoanApplicationService;
+import com.example.ist412project.service.UserService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+
+import java.util.List;
+
+@Controller
+public class ViewLoanController {
+    @Autowired
+    private LoanApplicationService loanApplicationService;
+    @Autowired
+    private OutstandingLoanRepository outstandingLoanRepository;
+
+    private LoanApplicationModel loanApplicationModel;
+
+private OutstandingLoan outstandingLoan;
+    @GetMapping("/viewLoan")
+    public String viewLoanPage(Model model, @RequestParam Long userID) {
+        // Retrieve loan applications by user ID
+
+        LoanApplicationModel loanApplication = loanApplicationService.getLoanApplicationByUserId(userID);
+
+        model.addAttribute("balance", outstandingLoanRepository);
+
+        // Add loan applications to the model
+        model.addAttribute("loanApplications", loanApplication);
+
+        // Add userId to the model
+        model.addAttribute("userID", userID);
+        model.addAttribute("tax", loanApplication);
+        model.addAttribute("outstandingLoan", outstandingLoan);
+
+        // Return the view name
+        return "viewLoan";
+    }
+}

@@ -56,4 +56,12 @@ public class LoanApplicationServiceImpl implements LoanApplicationService {
         return (long) -1;
     }
 
+
+
+    public LoanApplicationModel getLoanApplicationByUserId(Long userId) {
+        // Implement logic to fetch a single loan application based on userId
+        // For example, you might use findOne or findById
+        return loanApplicationRepository.findById(userId).orElse(null);
+    }
+
 }

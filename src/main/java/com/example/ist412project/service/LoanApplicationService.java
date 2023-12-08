@@ -13,4 +13,5 @@ public interface LoanApplicationService {
     void createLoanApplicationForUser(LoanApplicationModel loanApplication, Long userId);
 
     Long getLoanIdFromUserId(Long userId);
+    LoanApplicationModel getLoanApplicationByUserId(Long userId);
 }
