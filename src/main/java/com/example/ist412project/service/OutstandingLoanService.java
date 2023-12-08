@@ -5,7 +5,7 @@ import com.example.ist412project.model.Payment;
 
 public interface OutstandingLoanService {
 
-    void applyPayment(Payment payment, OutstandingLoan loan);
+    void applyPayment(Payment payment, OutstandingLoan loan, long userID);
 
     OutstandingLoan getOutstandingLoanFromLoanId(Long id);
 }

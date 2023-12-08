@@ -4,6 +4,7 @@ public class Payment {
     private long loanId;
     private long amount;
     private String type;
+    private long userID;
 
     public long getLoanId() {
         return loanId;
@@ -27,5 +28,13 @@ public class Payment {
 
     public void setType(String type) {
         this.type = type;
+    }
+
+    public long getUserID() {
+        return userID;
+    }
+
+    public void setUserID(long userID) {
+        this.userID = userID;
     }
 }

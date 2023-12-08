@@ -16,7 +16,8 @@ public class OutstandingLoan {
 
     @Column(name = "paid_off")
     private Boolean paidOff;
-
+    @Column(name = "userID")
+    private long userID;
     @OneToOne
     @JoinColumn(name = "apid")
     private LoanApplicationModel loan;
@@ -64,5 +65,12 @@ public class OutstandingLoan {
 
     public void setLoan(LoanApplicationModel loan) {
         this.loan = loan;
+    }
+    public long getUserID() {
+        return userID;
+    }
+
+    public void setUserID(long userID) {
+        this.userID = userID;
     }
 }
