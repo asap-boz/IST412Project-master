@@ -37,7 +37,7 @@ public class LoanController {
         OutstandingLoan loan = outstandingLoanService.getOutstandingLoanFromLoanId(loanServ.getLoanIdFromUserId(userID));
         if (loan == null)
             return "noLoans";
-        model.addAttribute("loan", outstandingLoanService);
+        model.addAttribute("loan", loan);
         //to-do Add current balance here to model to be displayed
         return "makeaPayment";
     }
