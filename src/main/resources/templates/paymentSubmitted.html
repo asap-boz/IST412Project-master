@@ -37,10 +37,10 @@
                             <a class="nav-link" th:href="@{/dashboard/user/{userID}(userID=${userID})}">Dashboard</a>
                         </li>
                         <li class="nav-item mr-2">
-                            <a class="nav-link" th:href="@{/makeaPayment(userID=${userID})}">Make a Payment</a>
+                            <a class="nav-link" th:href="@{/apply(userID=${userID})}">Apply for a New Loan</a>
                         </li>
                         <li class="nav-item mr-2">
-                            <a class="nav-link" th:href="@{/inbox}">Inbox</a>
+                            <a class="nav-link" th:href="@{/viewLoan(userID=${userID})}">View Loan</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" th:href="@{/}">Log Out</a>
@@ -53,7 +53,7 @@
 </nav>
 <div class="success-message">
     <h1>Payment submitted successfully!</h1>
-    <h2 th:text="|Remaining balance: *{balance}|"></h2>
+    <h2 th:text="|Remaining balance: $*{balance}|"></h2>
     <p class="small mb-5 pb-lg-2"><a th:href="@{/dashboard/user/{userID}(userID=${userID})}">Return to dashboard
     </a></p>
 </div>

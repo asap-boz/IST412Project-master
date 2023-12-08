@@ -72,9 +72,6 @@
                         <li class="nav-item mr-2">
                             <a class="nav-link" th:href="@{/makeaPayment(userID=${userID})}">Make a Payment</a>
                         </li>
-                        <li class="nav-item mr-2">
-                            <a class="nav-link" th:href="@{/inbox}">Inbox</a>
-                        </li>
                         <li class="nav-item">
                             <a class="nav-link" th:href="@{/}">Log Out</a>
                         </li>
@@ -87,13 +84,13 @@
 <div class="success-message">
     <h1>Loan Application Details!</h1>
 
-    <p>Interest Rate: <span class="loan-variable" th:text="${tax.interestRate}"></span></p>
-    <p>Loan Amount: <span class="loan-variable" th:text="${loanApplications.loanAmount}"></span></p>
-    <p>Balance Remaining: <span th:if="${outstandingLoan != null}" class="loan-variable" th:text="${outstandingLoan.balance}"></span></p>
-    <p>Term: <span class="loan-variable" th:text="${loanApplications.term}"></span></p>
+    <p>Interest Rate: <span class="loan-variable" th:text="|*{tax.interestRate}%|"></span></p>
+    <p>Loan Amount: <span class="loan-variable" th:text="|$*{loanApplications.loanAmount}|"></span></p>
+    <p>Balance Remaining: <span th:if="${outstandingLoan != null}" class="loan-variable" th:text="|$*{outstandingLoan.balance}|"></span></p>
+    <p>Term: <span class="loan-variable" th:text="|*{loanApplications.term} months|"></span></p>
     <p>Loan Type: <span class="loan-variable" th:text="${loanApplications.loanType}"></span></p>
-    <p>Expenses: <span class="loan-variable" th:text="${loanApplications.expenses}"></span></p>
-    <p>Income: <span class="loan-variable" th:text="${loanApplications.income}"></span></p>
+    <p>Expenses: <span class="loan-variable" th:text="|$*{loanApplications.expenses}|"></span></p>
+    <p>Income: <span class="loan-variable" th:text="|$*{loanApplications.income}|"></span></p>
     <p>Marital Status: <span class="loan-variable" th:text="${loanApplications.maritalStatus}"></span></p>
 
 

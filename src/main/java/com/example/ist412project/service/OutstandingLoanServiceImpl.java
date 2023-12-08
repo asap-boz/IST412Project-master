@@ -29,6 +29,8 @@ public class OutstandingLoanServiceImpl implements OutstandingLoanService{
 
     @Override
     public OutstandingLoan getOutstandingLoanFromLoanId(Long id) {
+        if (id == -1)
+            return null;
         List<OutstandingLoan> list = loanRepo.findAll();
 
         for (int i = 0; i < list.size(); i++)

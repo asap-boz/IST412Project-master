@@ -28,6 +28,8 @@ public class ViewLoanController {
 private OutstandingLoan outstandingLoan;
     @GetMapping("/viewLoan")
     public String viewLoanPage(Model model, @RequestParam Long userID) {
+        // Add userId to the model
+        model.addAttribute("userID", userID);
         // Retrieve loan applications by user ID
 
         LoanApplicationModel loanApplication = loanApplicationService.getLoanApplicationByUserId(userID);
@@ -37,8 +39,8 @@ private OutstandingLoan outstandingLoan;
 
         outstandingLoan = outstandingLoanService.getOutstandingLoanFromLoanId(loanApplicationService.getLoanIdFromUserId(userID));
 
-        // Add userId to the model
-        model.addAttribute("userID", userID);
+        if (loanApplication == null)
+            return "noLoans";
         model.addAttribute("tax", loanApplication);
         model.addAttribute("outstandingLoan", outstandingLoan);
 

@@ -34,7 +34,10 @@ public class LoanController {
         //model.addAttribute("balance", balance);
         Payment payment = new Payment();
         model.addAttribute("payment", payment);
-        model.addAttribute("loan", outstandingLoanService.getOutstandingLoanFromLoanId(loanServ.getLoanIdFromUserId(userID)));
+        OutstandingLoan loan = outstandingLoanService.getOutstandingLoanFromLoanId(loanServ.getLoanIdFromUserId(userID));
+        if (loan == null)
+            return "noLoans";
+        model.addAttribute("loan", outstandingLoanService);
         //to-do Add current balance here to model to be displayed
         return "makeaPayment";
     }

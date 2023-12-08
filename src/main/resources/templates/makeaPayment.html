@@ -74,10 +74,6 @@
                         <li class="nav-item mr-2">
                             <a class="nav-link" th:href="@{/viewLoan(userID=${userID})}">View Loan</a>
                         </li>
-                        <li class="nav-item mr-2">
-                        <li class="nav-item mr-2">
-                            <a class="nav-link" th:href="@{/inbox}">Inbox</a>
-                        </li>
                         <li class="nav-item">
                             <a class="nav-link" th:href="@{/}">Log Out</a>
                         </li>
@@ -98,7 +94,7 @@
             <div class="loan-form">
                 <form th:action="@{/makeaPayment(userID=${userID})}" method="post">
                     <div class="form-group">
-                        <h3 th:text="|Balance: ${loan.balance}|"></h3>
+                        <h3 th:text="|Balance: $*{loan.balance}|"></h3>
                     </div>
                     <div class="form-group">
                         <label for="payment">Payment:</label>
