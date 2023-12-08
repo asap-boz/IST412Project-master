@@ -45,25 +45,9 @@ public class LoanController {
         OutstandingLoan paidLoan = outstandingLoanService.getOutstandingLoanFromLoanId(loanServ.getLoanIdFromUserId(id));
         outstandingLoanService.applyPayment(payment, paidLoan);
 
-        //Logic for subtracting amount from balance
-//        if (type.equals("auto")) {
-//            aLoanServ.processPayment(id, amount);
-//        }
-        return "redirect:/dashboard/user/" + id;
-    }
+        model.addAttribute("userID", id);
+        model.addAttribute("balance", paidLoan.getBalance());
 
-    @GetMapping("/auto_loan")
-    public String showAutoLoan(Model model){
-        model.addAttribute("autoLoan", new AutoLoan());
-        return "auto_loan_application";
-    }
-
-    @PostMapping("/auto_loan")
-    public String showAutoLoan(@ModelAttribute("autoLoan") AutoLoan autoLoan, Model model){
-        Authentication userAuthInfo = SecurityContextHolder.getContext().getAuthentication();
-        String email = ((UserDetails)userAuthInfo.getPrincipal()).getUsername();
-        autoLoan.setUser(userServ.accessByEmail(email));
-        aLoanServ.saveLoan(autoLoan);
-        return "thank_you";
+        return "paymentSubmitted";
     }
 }
